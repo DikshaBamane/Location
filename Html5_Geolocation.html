@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo_Location</title>
+</head>
+<body>
+    <center>
+        Lat:<input type="text" id="txtlat"/> <br>
+        lon:<input type="text" id="txtlon"/><br><br>
+        <button onclick="TrackMe()"> Click Me</button><br>
+        <a href="" target="_blank" id="geolocationbutton">Visit the Location</a>
+</center>
+
+<script>
+    function TrackMe(){
+        navigator.geolocation.getCurrentPosition(F1,F2);
+    }
+    var url = ``;
+    function F1(result){
+        refTotxtLat=document.getElementById("txtlat");
+        refTotxtLon=document.getElementById("txtlon");
+        refTotxtLat.value=result.coords.latitude;
+        refTotxtLon.value=result.coords.longitude;
+
+        var url=`https://www.latlong.net/c/?lat=${refTotxtLat.value}&long=${refTotxtLon.value}`;
+
+        var refToLocationButton=document.getElementById("geolocationbutton");
+        refToLocationButton.href=url;
+
+    }
+    function F2(error){
+        alert("Something went Wrong!!");
+    }
+</script>
+
+</body>
+</html>
